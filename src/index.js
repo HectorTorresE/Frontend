@@ -2,17 +2,27 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-
+import { Greeting } from './features/greetings.js';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <div>
+          <Routes>
+            <Route path="/" element={<Greeting />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
